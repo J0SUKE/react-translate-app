@@ -1,0 +1,295 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+$lightgray:rgb(226, 226, 226);
+$very-lightgray:rgb(240, 240, 240);
+
+*,*::before,*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    font-family: "Montserrat";
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+button
+{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    color: inherit;
+}
+
+.pageContent
+{
+    width: 100%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;   
+}
+
+.main-content
+{
+    width: 90%;
+    max-width: 1300px;
+    min-height: 450px;
+    height: auto;
+    border: 1px solid lightgray;
+    margin: 150px auto 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.42);
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and(max-width:1000px) {
+        flex-direction: column;
+        .input-area,.translate-area
+        {
+            width: 100%;
+            min-height: 300px;
+        }
+    }
+
+}
+
+.translate-area
+{
+    background: $very-lightgray;
+}
+
+.input-area,.translate-area
+{
+    width: 50%;
+    height: auto;
+    padding-bottom: 20px;
+    .lang-section
+    {
+        height: 70px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 2rem 0 0 2rem;
+    }
+
+    textarea,.translation
+    {
+        border: none;
+        outline: none;
+        resize: none;
+        background: transparent;
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 2rem 0 0 0;
+        padding: 0 1rem 0 2rem;
+        width: 100%;
+        min-height: calc(100% - 90px);
+
+        &::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: darkgray;
+            border-radius: 5px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+                background: #1A98FF;
+        }
+    }
+}
+
+.lang-choice-section
+{
+    font-size: 1.1rem;
+    display: flex;
+    .select-lang-btn
+    {
+        height: 45px;
+        width: 180px;
+        border-radius: 22.5px;
+        background: $lightgray;
+        display: flex;
+        align-items: center;
+        padding: 0 5px;
+        cursor: pointer;
+        &:hover
+        {
+            background: rgb(196, 196, 196);
+        }
+        .lang-flag{
+            height: 35px;
+            min-height: 35px;
+            width: 35px;
+            min-width: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-image: url("../assets/images/usa.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        p{
+            font-weight: 700;
+            font-size: 1rem;
+            margin-left: .6rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space:nowrap;
+            width: 70%;
+            max-width: 100px;
+            text-align: left;
+        }
+
+        span
+        {
+            display: block;
+            width: 25px;
+            min-width: 25px;
+            height: 15px;
+            min-height: 15px;
+            //border: 1px solid black;
+            margin-right: 15px;
+            position: relative;
+            &::after
+            {
+                content: "";
+                position: absolute;
+                right: 0;
+                height: 8px;
+                width: 8px;
+                border-bottom: 2px solid black;
+                border-right: 2px solid black;
+                transform: rotate(45deg);
+            }   
+        }
+    }
+
+    .recent-lang
+    {
+        margin: 0 0  0 1.5rem;
+        color: rgb(139, 139, 139);
+        font-weight: 600;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space:nowrap;
+        max-width: 100px;
+        &:hover
+        {
+            color: black;
+        }
+    }
+
+    @media screen and(max-width:500px)
+    {
+        .recent-lang
+        {
+            display: none;
+        }
+    }
+}
+
+
+
+.select-lang-menu
+{
+    position: absolute;
+    left: 2rem;
+    top: 85px;
+    width: 250px;
+    z-index: 2;
+    background: $lightgray;
+    border-radius:15px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    form{
+        padding: 10px;
+    }
+    input{
+        width: 100%;
+        height: 36px;
+        border-radius: 18px;
+        border: none;
+        outline: none;
+        padding: 18px;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    ul{
+        width: 100%;
+        max-height: 400px;
+        overflow-y:scroll;
+        &::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: darkgray;
+            border-radius: 5px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+                background: #1A98FF;
+        }
+
+        li{
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            &:hover
+            {
+                background: lightgray;
+            }
+            span{
+                display: block;
+                height: 20px;
+                min-height: 20px;
+                width: 20px;
+                min-width: 20px;
+                border-radius: 50%;
+                overflow: hidden;
+                img{
+                    object-fit: cover;
+                    height: 100%;
+                    width: auto;
+                }
+            }
+            p{
+                margin-left: .8rem;
+                font-weight: 800;
+                font-size: .8rem;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
