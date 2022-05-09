@@ -34,7 +34,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![screenshot](screenshots/screen1.png)
+![screenshot](screenchots/screen1.png)
 
 ### Built With
 
