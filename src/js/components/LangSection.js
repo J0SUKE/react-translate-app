@@ -4,8 +4,11 @@ class RecentLang extends React.Component
 {
     render()
     {
-        const{lang} = this.props;
-        return (<button className="recent-lang">{lang}</button>)
+        const{lang,setpreviousLang} = this.props;
+        return (<button 
+            className="recent-lang"
+            onClick={()=>setpreviousLang(lang)}
+            >{lang.name}</button>)
     }
 }
 
@@ -18,7 +21,7 @@ export default class LangSection extends React.Component
     }
     render()
     {
-        const{toggleMenu,actualLang,previousLangs} = this.props;
+        const{toggleMenu,actualLang,previousLangs,setpreviousLang} = this.props;
         
         return (
             <div className="lang-choice-section">
@@ -29,8 +32,8 @@ export default class LangSection extends React.Component
                     <p>{actualLang.name}</p>
                     <span></span>
                 </button>
-                <RecentLang lang={previousLangs[0].name}/>
-                <RecentLang lang={previousLangs[1].name}/>
+                <RecentLang lang={previousLangs[0]} setpreviousLang={setpreviousLang}/>
+                <RecentLang lang={previousLangs[1]} setpreviousLang={setpreviousLang}/>
             </div>
         )
     }

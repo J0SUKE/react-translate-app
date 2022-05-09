@@ -17,10 +17,10 @@ export default class App extends React.Component
             inputLang:{name:"English",language:"en",flag: "https://flagcdn.com/us.svg"},
             outputLang:{name:"French",language:"fr",flag: "https://flagcdn.com/fr.svg"},
             previousInputLangs:[
-                {language: "es",name: "Spanish",flag: "https://flagcdn.com/mx.svg"},
+                {language: "es",name: "Spanish",flag: "https://flagcdn.com/es.svg"},
                 {language: "it",name: "Italian",flag: "https://flagcdn.com/it.svg"}],
             previousOutputLangs:[
-                {language: "es",name: "Spanish",flag: "https://flagcdn.com/mx.svg"},
+                {language: "es",name: "Spanish",flag: "https://flagcdn.com/es.svg"},
                 {language: "it",name: "Italian",flag: "https://flagcdn.com/it.svg"}],
             value:"",
             translated:"",
@@ -40,6 +40,7 @@ export default class App extends React.Component
                                 toggleMenu={this.toggleInputLangMenu.bind(this)}
                                 actualLang={this.state.inputLang}
                                 previousLangs={this.state.previousInputLangs}
+                                setpreviousLang={this.setPreviousInputLang.bind(this)}
                             />
                             {
                                 this.state.inputLangMenu ? 
@@ -65,6 +66,7 @@ export default class App extends React.Component
                                     toggleMenu={this.toggleOutputLangMenu.bind(this)}
                                     actualLang={this.state.outputLang}
                                     previousLangs={this.state.previousOutputLangs}
+                                    setpreviousLang={this.setPreviousOutputLang.bind(this)}
                                     />
                                 {this.state.outputLangMenu ? 
                                     <LangMenu 
@@ -165,8 +167,8 @@ export default class App extends React.Component
         };
         const encodedParams = new URLSearchParams();
         encodedParams.append("q", input);
-        encodedParams.append("target", this.state.outputLang);
-        encodedParams.append("source", this.state.inputLang);
+        encodedParams.append("target", this.state.outputLang.language);
+        encodedParams.append("source", this.state.inputLang.language);
 
         const options = {
             method: 'POST',
@@ -244,4 +246,46 @@ export default class App extends React.Component
 
     }
 
+    setPreviousInputLang(lang)
+    {
+        const index = (lang.name == this.state.previousInputLangs[0].name ? 1 : 0);
+        console.log(index);
+        
+        this.setState((state)=>({
+            inputLang:{language: lang.language,name: lang.name,flag: lang.flag},
+            
+            previousInputLangs:[
+                {
+                    language: state.inputLang.language,
+                    name: state.inputLang.name,
+                    flag: state.inputLang.flag},
+                {
+                    language: state.previousInputLangs[index].language,
+                    name: state.previousInputLangs[index].name,
+                    flag: state.previousInputLangs[index].flag
+                }],
+        }))   
+    }
+
+    setPreviousOutputLang(lang)
+    {
+        const index = (lang.name == this.state.previousOutputLangs[0].name ? 1 : 0);
+        console.log(index);
+        
+        this.setState((state)=>({
+            outputLang:{language: lang.language,name: lang.name,flag: lang.flag},
+            
+            previousOutputLangs:[
+                {
+                    language: state.outputLang.language,
+                    name: state.outputLang.name,
+                    flag: state.outputLang.flag},
+                {
+                    language: state.previousOutputLangs[index].language,
+                    name: state.previousOutputLangs[index].name,
+                    flag: state.previousOutputLangs[index].flag
+                }],
+        }))   
+    }
+    
 }

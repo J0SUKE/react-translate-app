@@ -437,7 +437,7 @@ export default [
     {
         "language": "es",
         "name": "Spanish",
-        "flag": "https://flagcdn.com/mx.svg"
+        "flag": "https://flagcdn.com/es.svg"
     },
     {
         "language": "su",
