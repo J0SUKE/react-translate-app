@@ -63,7 +63,7 @@ header
         }
         p{
             font-size: 1.3rem;
-            font-weight: 800;
+            font-weight: 700;
             color: $lightBlue;
             letter-spacing: .2rem;
             margin-left: .5rem;
@@ -82,6 +82,12 @@ header
                 }
             }
         }
+    }
+    @media screen and (max-width:500px) 
+    {
+        ul{
+            display: none;
+        }    
     }
 }
 
@@ -272,7 +278,7 @@ header
         }
         
         p{
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1rem;
             margin-left: .6rem;
             overflow: hidden;
@@ -412,7 +418,7 @@ header
             }
             p{
                 margin-left: .8rem;
-                font-weight: 800;
+                font-weight: 500;
                 font-size: .8rem;
                 overflow: hidden;
                 white-space: nowrap;
