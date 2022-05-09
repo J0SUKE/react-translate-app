@@ -3,8 +3,9 @@ import LangSection from "./components/LangSection.js";
 import LangMenu from "./components/langMenu/LangMenu.js";
 import InputZone from "./components/inputZone.js";
 import languages from "./data/languages.js"
-import {getLength} from "./utils/mathUtils.js";
-
+import SwitchLang from "./components/SwitchLang.js";
+import BottomInput from "./components/BottomInput.js";
+import {HTMLdecode} from "./utils/jsUtils.js";
 
 export default class App extends React.Component
 {
@@ -25,7 +26,8 @@ export default class App extends React.Component
             value:"",
             translated:"",
             filterdLangs:[],
-            searchBarValue:""
+            searchBarValue:"",
+            detected:null
         }
         this.languages=languages;
     
@@ -53,11 +55,17 @@ export default class App extends React.Component
                                     /> : 
                                     null
                             }
+                            <SwitchLang SwitchLanguage={this.SwitchLanguage.bind(this)}/>
                         </div>
                         <InputZone
                             value={this.state.value}
                             updateValue={this.handleTextInput.bind(this)}
                             translateText={this.translateText.bind(this)}
+                            />
+                        <BottomInput 
+                            translateText={this.translateText.bind(this)}
+                            value={this.state.value}
+                            detected={this.state.detected}
                             />
                     </div>
                     <div className="translate-area">
@@ -115,27 +123,6 @@ export default class App extends React.Component
         
     }
 
-    getLanguagesList()
-    {
-        // const options = {
-        //     method: 'GET',
-        //     headers: {
-        //         'Accept-Encoding': 'application/gzip',
-        //         'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
-        //         'X-RapidAPI-Key': 'f2eb276479mshe2588f6254e9b51p1ef845jsn0e64a991a846'
-        //     }
-        // };
-        
-        // fetch('https://google-translate1.p.rapidapi.com/language/translate/v2/languages?target=en', options)
-        //     .then(response => response.json())
-        //     .then(response =>
-        //         { 
-        //             this.languages=response.data.languages;    
-        //             console.log(this.languages)
-        //         })
-        //     .catch(err => console.error(err));
-    }
-
     setInputLang(lang)
     {
         this.setState({
@@ -165,10 +152,7 @@ export default class App extends React.Component
             })
             return;
         };
-        const encodedParams = new URLSearchParams();
-        encodedParams.append("q", input);
-        encodedParams.append("target", this.state.outputLang.language);
-        encodedParams.append("source", this.state.inputLang.language);
+
 
         const options = {
             method: 'POST',
@@ -177,18 +161,39 @@ export default class App extends React.Component
                 'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
                 'X-RapidAPI-Key': 'f2eb276479mshe2588f6254e9b51p1ef845jsn0e64a991a846'
             },
-            body: encodedParams
         };
 
-        // fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
-        //     .then(response => response.json())
-        //     .then(response=>response.data.translations[0].translatedText)
-        //     .then((response)=>{
-        //         this.setState({
-        //             translated:response
-        //         })
-        //     })
-        //     .catch(err => console.error(err));
+        const encodedParams = new URLSearchParams();
+        encodedParams.append("q", input);
+
+        if (this.state.inputLang.name=="Detect Language") 
+        {
+            options.body = encodedParams;
+            
+            fetch('https://google-translate1.p.rapidapi.com/language/translate/v2/detect', options)
+            .then(response => response.json())
+            .then(response => response.data.detections[0][0])
+            .then(response => {console.log(response);return response})
+            .then(response => this.detectLang(response))
+            .catch(err => console.error(err));      
+        }
+        else
+        {
+            encodedParams.append("target", this.state.outputLang.language);
+            encodedParams.append("source", this.state.inputLang.language);
+
+            options.body = encodedParams;
+
+            fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
+            .then(response => response.json())
+            .then(response=>response.data.translations[0].translatedText)
+            .then((response)=>{
+                this.setState({
+                    translated:HTMLdecode(response)
+                })
+            })
+            .catch(err => console.error(err));
+        }
     }
 
 
@@ -204,52 +209,9 @@ export default class App extends React.Component
         })
     }
 
-    getFlag(lang,element)
-    {
-        fetch(`https://restcountries.com/v3.1/lang/${lang}`)
-        .then((resp)=>
-            {
-                return new Promise((resolve,reject)=>{
-                    if (resp.status!=404) {
-                        resolve(resp)
-                    }
-                    else
-                    {
-                        reject("not found")
-                    }
-                })
-            })
-        .then((resp)=>resp.json())
-        .then((data)=>data.filter(country=>country.independent))
-        .then((resp)=>{
-                if (resp.length>1) {
-                    resp = resp.sort((a,b)=>(a.population-b.population));
-                    resp = resp.filter(country=>getLength(country.languages)==1);
-
-                    if (resp.length==1) {
-                        return resp[0].flags.svg;
-                    }
-                    else
-                    {
-                        return resp[resp.length-1].flags.svg;
-                    }
-                }    
-                else
-                {
-                    return resp[0].flags.svg;
-                }
-            })
-        .then(data=>{element["flag"]=data})
-        .catch(rep=>{
-            element["flag"]="#";
-        })
-
-    }
-
     setPreviousInputLang(lang)
     {
         const index = (lang.name == this.state.previousInputLangs[0].name ? 1 : 0);
-        console.log(index);
         
         this.setState((state)=>({
             inputLang:{language: lang.language,name: lang.name,flag: lang.flag},
@@ -270,7 +232,6 @@ export default class App extends React.Component
     setPreviousOutputLang(lang)
     {
         const index = (lang.name == this.state.previousOutputLangs[0].name ? 1 : 0);
-        console.log(index);
         
         this.setState((state)=>({
             outputLang:{language: lang.language,name: lang.name,flag: lang.flag},
@@ -286,6 +247,49 @@ export default class App extends React.Component
                     flag: state.previousOutputLangs[index].flag
                 }],
         }))   
+    }
+
+    SwitchLanguage(e)
+    {
+        this.setState((state)=>({
+            inputLang:state.outputLang,
+            outputLang:state.inputLang,
+        }))
+
+
+        let targetElement;
+        if (e.target.className=="switch-btn") {
+            targetElement = e.target;
+        }
+        else
+        {
+            targetElement=e.target.closest(".switch-btn");
+        }
+
+        targetElement.classList.add("active");
+        setTimeout(() => {
+            targetElement.classList.remove("active");
+        }, 700);
+    }
+
+    detectLang(lang)
+    {
+        
+        const detectedLanguage = lang.language;
+        const  language = this.languages.filter(elem=>elem.language==detectedLanguage)
+        
+        if (language.length!=0) {
+            this.setState({
+                detected:language[0]
+            })
+        }
+        else
+        {
+            
+        }
+        
+        
+        console.log(language);
     }
     
 }

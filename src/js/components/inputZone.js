@@ -15,7 +15,12 @@ export default class InputZone extends React.Component
                     placeholder="Enter a text"
                     value={value}
                     onInput={updateValue}
-                    onClick={()=>{translateText(value)}}
+                    spellCheck="false"
+                    onKeyUp={(e)=>{
+                        if (e.key=="Enter") {
+                            translateText(value);
+                        }
+                    }}
                     ></textarea>
         )
     }

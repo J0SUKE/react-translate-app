@@ -5,6 +5,8 @@
 
 $lightgray:rgb(226, 226, 226);
 $very-lightgray:rgb(240, 240, 240);
+$lightBlue:#1A98FF;
+$darkgray:#616161;
 
 *,*::before,*::after
 {
@@ -48,6 +50,7 @@ button
     box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.42);
     display: flex;
     justify-content: space-between;
+    //overflow: hidden;
 
     @media screen and(max-width:1000px) {
         flex-direction: column;
@@ -63,6 +66,7 @@ button
 .translate-area
 {
     background: $very-lightgray;
+    border-radius: 0 20px 20px 0;
 }
 
 .input-area,.translate-area
@@ -76,12 +80,48 @@ button
         width: 100%;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         position: relative;
-        padding: 2rem 0 0 2rem;
+        padding: 2rem 2rem 0 2rem;
+    }
+    .switch-btn
+    {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $very-lightgray;
+        cursor: pointer;
+        &:hover
+        {
+            background: $lightgray;
+        }
+        
+        @keyframes animate-btn {
+            from{
+                transform: rotate(0deg);
+            }to{
+                transform: rotate(180deg);
+            }
+        }
+        @keyframes animate-btn-color {
+            from{
+                background: $lightBlue;
+            }to{
+                background: $lightgray;
+            }
+        }
+
+        &.active
+        {
+            animation: animate-btn .5s forwards , animate-btn-color .7s forwards;    
+        }
     }
     .translation
     {
-        color: rgb(97, 97, 97);
+        color: $darkgray;
     }
     textarea,.translation
     {
@@ -94,8 +134,9 @@ button
         margin: 2rem 0 0 0;
         padding: 0 1rem 0 2rem;
         width: 100%;
-        min-height: calc(100% - 90px);
-
+        min-height: 190px;
+        height: 67%;
+        max-height: 67%;
         &::-webkit-scrollbar {
         width: 10px;
         }
@@ -113,7 +154,31 @@ button
 
         /* Handle on hover */
         &::-webkit-scrollbar-thumb:hover {
-                background: #1A98FF;
+                background: $lightBlue;
+        }
+    }
+    .translate-btn-section
+    {
+        width: 100%;
+        height: 50px;
+        //border: 1px solid red;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: $lightBlue;
+            cursor: pointer;
+        }
+        p{
+            font-weight: 800;
+            color: $darkgray;
+            span{
+                color: $lightBlue;
+            }
         }
     }
 }
