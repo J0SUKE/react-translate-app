@@ -1,5 +1,6 @@
 import React from "react";
 import LangChoice from "./langChoice.js";
+import SearchBar from "./searchBar.js";
 export default class LangMenu extends React.Component
 {
     constructor(props)
@@ -8,14 +9,37 @@ export default class LangMenu extends React.Component
     }
     render()
     {
+        
+        const {languages,setLang,SearchBarValue,filterSearchBarLanguages,filterdLangs} = this.props;
+
+        let items;
+        
+        if (SearchBarValue=="") {
+            items=[...languages];
+        }
+        else
+        {
+            items=[...filterdLangs];
+        }
+
+
+        items = items.map(element=>{
+            return (<LangChoice 
+                            imageURL={element.flag} 
+                            lang={element.name}
+                            key={Math.random()*1000}
+                            setLang={()=>{setLang(element)}}
+                            />)
+        })
+        
         return (
             <menu className="select-lang-menu">
-                <form action="">
-                    <input type="text" placeholder="Search here..."/>
-                </form>
+                <SearchBar 
+                        SearchBarValue={SearchBarValue}
+                        filterSearchBarLanguages={filterSearchBarLanguages}
+                        />
                 <ul>
-                    <LangChoice imageURL={"./images/Auto.svg"} lang={"Detect Language"}/>
-                    <LangChoice imageURL={"./images/usa.png"} lang={"English (United States)"}/>
+                    {items}
                 </ul>
             </menu>
         )

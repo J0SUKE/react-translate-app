@@ -1,336 +1,552 @@
-export default
-[
+export default [
     {
-        "language": "af"
+        "language": "af",
+        "name": "Afrikaans",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "am"
+        "language": "sq",
+        "name": "Albanian",
+        "flag": "https://flagcdn.com/al.svg"
     },
     {
-        "language": "ar"
+        "language": "am",
+        "name": "Amharic",
+        "flag": "https://flagcdn.com/et.svg"
     },
     {
-        "language": "az"
+        "language": "ar",
+        "name": "Arabic",
+        "flag": "https://flagcdn.com/eg.svg"
     },
     {
-        "language": "be"
+        "language": "hy",
+        "name": "Armenian",
+        "flag": "https://flagcdn.com/am.svg"
     },
     {
-        "language": "bg"
+        "language": "az",
+        "name": "Azerbaijani",
+        "flag": "https://flagcdn.com/az.svg"
     },
     {
-        "language": "bn"
+        "language": "eu",
+        "name": "Basque",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "bs"
+        "language": "be",
+        "name": "Belarusian",
+        "flag": "https://flagcdn.com/by.svg"
     },
     {
-        "language": "ca"
+        "language": "bn",
+        "name": "Bengali",
+        "flag": "https://flagcdn.com/bd.svg"
     },
     {
-        "language": "ceb"
+        "language": "bs",
+        "name": "Bosnian",
+        "flag": "https://flagcdn.com/ba.svg"
     },
     {
-        "language": "co"
+        "language": "bg",
+        "name": "Bulgarian",
+        "flag": "https://flagcdn.com/bg.svg"
     },
     {
-        "language": "cs"
+        "language": "ca",
+        "name": "Catalan",
+        "flag": "https://flagcdn.com/ad.svg"
     },
     {
-        "language": "cy"
+        "language": "ceb",
+        "name": "Cebuano",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "da"
+        "language": "ny",
+        "name": "Chichewa",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "de"
+        "language": "zh-CN",
+        "name": "Chinese (Simplified)",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "el"
+        "language": "co",
+        "name": "Corsican",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "en"
+        "language": "hr",
+        "name": "Croatian",
+        "flag": "https://flagcdn.com/hr.svg"
     },
     {
-        "language": "eo"
+        "language": "cs",
+        "name": "Czech",
+        "flag": "https://flagcdn.com/cz.svg"
     },
     {
-        "language": "es"
+        "language": "da",
+        "name": "Danish",
+        "flag": "https://flagcdn.com/dk.svg"
     },
     {
-        "language": "et"
+        "language": "nl",
+        "name": "Dutch",
+        "flag": "https://flagcdn.com/nl.svg"
     },
     {
-        "language": "eu"
+        "language": "en",
+        "name": "English",
+        "flag": "https://flagcdn.com/us.svg"
     },
     {
-        "language": "fa"
+        "language": "eo",
+        "name": "Esperanto",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "fi"
+        "language": "et",
+        "name": "Estonian",
+        "flag": "https://flagcdn.com/ee.svg"
     },
     {
-        "language": "fr"
+        "language": "tl",
+        "name": "Filipino",
+        "flag": "https://flagcdn.com/ph.svg"
     },
     {
-        "language": "fy"
+        "language": "fi",
+        "name": "Finnish",
+        "flag": "https://flagcdn.com/fi.svg"
     },
     {
-        "language": "ga"
+        "language": "fr",
+        "name": "French",
+        "flag": "https://flagcdn.com/fr.svg"
     },
     {
-        "language": "gd"
+        "language": "fy",
+        "name": "Frisian",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "gl"
+        "language": "gl",
+        "name": "Galician",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "gu"
+        "language": "ka",
+        "name": "Georgian",
+        "flag": "https://flagcdn.com/ge.svg"
     },
     {
-        "language": "ha"
+        "language": "de",
+        "name": "German",
+        "flag": "https://flagcdn.com/de.svg"
     },
     {
-        "language": "haw"
+        "language": "el",
+        "name": "Greek",
+        "flag": "https://flagcdn.com/gr.svg"
     },
     {
-        "language": "he"
+        "language": "gu",
+        "name": "Gujarati",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "hi"
+        "language": "ht",
+        "name": "Haitian Creole",
+        "flag": "https://flagcdn.com/ht.svg"
     },
     {
-        "language": "hmn"
+        "language": "ha",
+        "name": "Hausa",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "hr"
+        "language": "haw",
+        "name": "Hawaiian",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "ht"
+        "language": "iw",
+        "name": "Hebrew",
+        "flag": "https://flagcdn.com/il.svg"
     },
     {
-        "language": "hu"
+        "language": "hi",
+        "name": "Hindi",
+        "flag": "https://flagcdn.com/in.svg"
     },
     {
-        "language": "hy"
+        "language": "hmn",
+        "name": "Hmong",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "id"
+        "language": "hu",
+        "name": "Hungarian",
+        "flag": "https://flagcdn.com/hu.svg"
     },
     {
-        "language": "ig"
+        "language": "is",
+        "name": "Icelandic",
+        "flag": "https://flagcdn.com/is.svg"
     },
     {
-        "language": "is"
+        "language": "ig",
+        "name": "Igbo",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "it"
+        "language": "id",
+        "name": "Indonesian",
+        "flag": "https://flagcdn.com/id.svg"
     },
     {
-        "language": "iw"
+        "language": "ga",
+        "name": "Irish",
+        "flag": "https://flagcdn.com/ie.svg"
     },
     {
-        "language": "ja"
+        "language": "it",
+        "name": "Italian",
+        "flag": "https://flagcdn.com/it.svg"
     },
     {
-        "language": "jw"
+        "language": "ja",
+        "name": "Japanese",
+        "flag": "https://flagcdn.com/jp.svg"
     },
     {
-        "language": "ka"
+        "language": "jw",
+        "name": "Javanese",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "kk"
+        "language": "kn",
+        "name": "Kannada",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "km"
+        "language": "kk",
+        "name": "Kazakh",
+        "flag": "https://flagcdn.com/kz.svg"
     },
     {
-        "language": "kn"
+        "language": "km",
+        "name": "Khmer",
+        "flag": "https://flagcdn.com/kh.svg"
     },
     {
-        "language": "ko"
+        "language": "rw",
+        "name": "Kinyarwanda",
+        "flag": "https://flagcdn.com/rw.svg"
     },
     {
-        "language": "ku"
+        "language": "ko",
+        "name": "Korean",
+        "flag": "https://flagcdn.com/kr.svg"
     },
     {
-        "language": "ky"
+        "language": "ku",
+        "name": "Kurdish (Kurmanji)",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "la"
+        "language": "ky",
+        "name": "Kyrgyz",
+        "flag": "https://flagcdn.com/kg.svg"
     },
     {
-        "language": "lb"
+        "language": "lo",
+        "name": "Lao",
+        "flag": "https://flagcdn.com/la.svg"
     },
     {
-        "language": "lo"
+        "language": "la",
+        "name": "Latin",
+        "flag": "https://flagcdn.com/va.svg"
     },
     {
-        "language": "lt"
+        "language": "lv",
+        "name": "Latvian",
+        "flag": "https://flagcdn.com/lv.svg"
     },
     {
-        "language": "lv"
+        "language": "lt",
+        "name": "Lithuanian",
+        "flag": "https://flagcdn.com/lt.svg"
     },
     {
-        "language": "mg"
+        "language": "lb",
+        "name": "Luxembourgish",
+        "flag": "https://flagcdn.com/lu.svg"
     },
     {
-        "language": "mi"
+        "language": "mk",
+        "name": "Macedonian",
+        "flag": "https://flagcdn.com/mk.svg"
     },
     {
-        "language": "mk"
+        "language": "mg",
+        "name": "Malagasy",
+        "flag": "https://flagcdn.com/mg.svg"
     },
     {
-        "language": "ml"
+        "language": "ms",
+        "name": "Malay",
+        "flag": "https://flagcdn.com/bn.svg"
     },
     {
-        "language": "mn"
+        "language": "ml",
+        "name": "Malayalam",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "mr"
+        "language": "mt",
+        "name": "Maltese",
+        "flag": "https://flagcdn.com/mt.svg"
     },
     {
-        "language": "ms"
+        "language": "mi",
+        "name": "Maori",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "mt"
+        "language": "mr",
+        "name": "Marathi",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "my"
+        "language": "mn",
+        "name": "Mongolian",
+        "flag": "https://flagcdn.com/mn.svg"
     },
     {
-        "language": "ne"
+        "language": "my",
+        "name": "Myanmar (Burmese)",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "nl"
+        "language": "ne",
+        "name": "Nepali",
+        "flag": "https://flagcdn.com/np.svg"
     },
     {
-        "language": "no"
+        "language": "no",
+        "name": "Norwegian",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "ny"
+        "language": "or",
+        "name": "Odia (Oriya)",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "or"
+        "language": "ps",
+        "name": "Pashto",
+        "flag": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg"
     },
     {
-        "language": "pa"
+        "language": "fa",
+        "name": "Persian",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "pl"
+        "language": "pl",
+        "name": "Polish",
+        "flag": "https://flagcdn.com/pl.svg"
     },
     {
-        "language": "ps"
+        "language": "pt",
+        "name": "Portuguese",
+        "flag": "https://flagcdn.com/br.svg"
     },
     {
-        "language": "pt"
+        "language": "pa",
+        "name": "Punjabi",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "ro"
+        "language": "ro",
+        "name": "Romanian",
+        "flag": "https://flagcdn.com/ro.svg"
     },
     {
-        "language": "ru"
+        "language": "ru",
+        "name": "Russian",
+        "flag": "https://flagcdn.com/ru.svg"
     },
     {
-        "language": "rw"
+        "language": "sm",
+        "name": "Samoan",
+        "flag": "https://flagcdn.com/ws.svg"
     },
     {
-        "language": "sd"
+        "language": "gd",
+        "name": "Scots Gaelic",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "si"
+        "language": "sr",
+        "name": "Serbian",
+        "flag": "https://flagcdn.com/rs.svg"
     },
     {
-        "language": "sk"
+        "language": "st",
+        "name": "Sesotho",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "sl"
+        "language": "sn",
+        "name": "Shona",
+        "flag": "https://flagcdn.com/zw.svg"
     },
     {
-        "language": "sm"
+        "language": "sd",
+        "name": "Sindhi",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "sn"
+        "language": "si",
+        "name": "Sinhala",
+        "flag": "https://flagcdn.com/lk.svg"
     },
     {
-        "language": "so"
+        "language": "sk",
+        "name": "Slovak",
+        "flag": "https://flagcdn.com/sk.svg"
     },
     {
-        "language": "sq"
+        "language": "sl",
+        "name": "Slovenian",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "sr"
+        "language": "so",
+        "name": "Somali",
+        "flag": "https://flagcdn.com/so.svg"
     },
     {
-        "language": "st"
+        "language": "es",
+        "name": "Spanish",
+        "flag": "https://flagcdn.com/mx.svg"
     },
     {
-        "language": "su"
+        "language": "su",
+        "name": "Sundanese",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "sv"
+        "language": "sw",
+        "name": "Swahili",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "sw"
+        "language": "sv",
+        "name": "Swedish",
+        "flag": "https://flagcdn.com/se.svg"
     },
     {
-        "language": "ta"
+        "language": "tg",
+        "name": "Tajik",
+        "flag": "https://flagcdn.com/tj.svg"
     },
     {
-        "language": "te"
+        "language": "ta",
+        "name": "Tamil",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "tg"
+        "language": "tt",
+        "name": "Tatar",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "th"
+        "language": "te",
+        "name": "Telugu",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "tk"
+        "language": "th",
+        "name": "Thai",
+        "flag": "https://flagcdn.com/th.svg"
     },
     {
-        "language": "tl"
+        "language": "tr",
+        "name": "Turkish",
+        "flag": "https://flagcdn.com/tr.svg"
     },
     {
-        "language": "tr"
+        "language": "tk",
+        "name": "Turkmen",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "tt"
+        "language": "uk",
+        "name": "Ukrainian",
+        "flag": "https://flagcdn.com/ua.svg"
     },
     {
-        "language": "ug"
+        "language": "ur",
+        "name": "Urdu",
+        "flag": "https://flagcdn.com/pk.svg"
     },
     {
-        "language": "uk"
+        "language": "ug",
+        "name": "Uyghur",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "ur"
+        "language": "uz",
+        "name": "Uzbek",
+        "flag": "https://flagcdn.com/uz.svg"
     },
     {
-        "language": "uz"
+        "language": "vi",
+        "name": "Vietnamese",
+        "flag": "https://flagcdn.com/vn.svg"
     },
     {
-        "language": "vi"
+        "language": "cy",
+        "name": "Welsh",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "xh"
+        "language": "xh",
+        "name": "Xhosa",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "yi"
+        "language": "yi",
+        "name": "Yiddish",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "yo"
+        "language": "yo",
+        "name": "Yoruba",
+        "flag": "./images/Auto.svg"
     },
     {
-        "language": "zh"
+        "language": "zu",
+        "name": "Zulu",
+        "flag": "https://flagcdn.com/za.svg"
     },
     {
-        "language": "zh-CN"
+        "language": "he",
+        "name": "Hebrew",
+        "flag": "https://flagcdn.com/il.svg"
     },
     {
-        "language": "zh-TW"
-    },
-    {
-        "language": "zu"
+        "language": "zh",
+        "name": "Chinese",
+        "flag": "./images/Auto.svg"
     }
 ]

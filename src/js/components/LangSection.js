@@ -1,36 +1,37 @@
 import React from "react";
 
+class RecentLang extends React.Component
+{
+    render()
+    {
+        const{lang} = this.props;
+        return (<button className="recent-lang">{lang}</button>)
+    }
+}
+
+
 export default class LangSection extends React.Component
 {
     constructor(props)
     {
         super(props);
-        this.getFlag("uk");
     }
     render()
     {
-        const{toggleMenu,actualLang} = this.props;
+        const{toggleMenu,actualLang,previousLangs} = this.props;
         
         return (
             <div className="lang-choice-section">
                 <button onClick={toggleMenu} className="select-lang-btn">
                     <div className="lang-flag">
+                        <img src={actualLang.flag} alt="" />
                     </div>
-                    <p>{actualLang}</p>
+                    <p>{actualLang.name}</p>
                     <span></span>
                 </button>
-                <button className="recent-lang">English (United states)</button>
-                <button className="recent-lang">Italian</button>
+                <RecentLang lang={previousLangs[0].name}/>
+                <RecentLang lang={previousLangs[1].name}/>
             </div>
         )
-    }
-
-
-    getFlag(lang)
-    {
-        //fetch(`https://restcountries.com/v3.1/alpha/${lang}`)
-        fetch(`https://restcountries.com/v3.1/lang/${lang}`)
-        .then(resp=>resp.json())
-        .then(data=>console.log(data));
     }
 }

@@ -8,9 +8,9 @@ export default class LangChoice extends React.Component
     }
     render()
     {
-        const {imageURL,lang} = this.props;
+        const {imageURL,lang,setLang} = this.props;
         return (
-            <li>
+            <li onClick={setLang}>
                 <span>
                     <img src={imageURL} alt="" />
                 </span>
