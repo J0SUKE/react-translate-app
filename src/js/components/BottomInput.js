@@ -8,7 +8,7 @@ export default class BottomInput extends React.Component
     }
     render()
     {
-        const{translateText,value,detected} = this.props;
+        const{detected} = this.props;
         
         return(
             <div className="translate-btn-section">
@@ -17,12 +17,9 @@ export default class BottomInput extends React.Component
                     <div></div>:
                     (detected==undefined ?
                         <p>We couldn't recognize this language</p> :
-                        <p>Your Language is : <span>{detected.name}</span></p>)
+                        <p>Your Language is : <span>{detected.name}</span></p>
+                    )
                 }
-                
-                <button onClick={()=>{translateText(value)}}>
-                    <img src="./images/arrow-right.svg" alt="" />
-                </button>
             </div>
         )
     }

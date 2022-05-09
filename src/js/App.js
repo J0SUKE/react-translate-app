@@ -35,6 +35,18 @@ export default class App extends React.Component
     render()
     {
         return <div className="pageContent" onClick={this.closeMenus.bind(this)}>
+                <header>
+                    <div className="header">
+                        <div className="logo">
+                            <img src="./images/Auto.svg" alt="" />
+                            <p>iTranslate</p>
+                        </div>
+                        <ul>
+                            <li><a target="_blank" href="https://twitter.com/Jean_M_____I">Twitter</a></li>
+                            <li><a target="_blank" href="https://github.com/J0SUKE">Github</a></li>
+                        </ul>
+                    </div>
+                </header>
                 <div className="main-content">
                     <div className="input-area">
                         <div className="lang-section">
@@ -90,6 +102,10 @@ export default class App extends React.Component
                         </div>
                     </div>
                 </div>
+                <div className="privacy">
+                    <img src="./images/icon-lock.svg" alt="" />
+                    <p>100% Private, we do not store any of your translations.</p>
+                </div>
             </div>
         }
 
@@ -132,8 +148,15 @@ export default class App extends React.Component
     }
     setOutputLang(lang)
     {
-        this.setState({
-            outputLang:lang  
+        const setLang = new Promise((resolve,reject)=>{
+            resolve(true);
+        }).then(()=>{
+            this.setState({
+                outputLang:lang,
+                detected:null
+            })
+        }).then(()=>{
+            this.translateText(this.state.value);
         })
     }
 
@@ -167,7 +190,9 @@ export default class App extends React.Component
         const encodedParams = new URLSearchParams();
         encodedParams.append("q", input);
 
-        if (this.state.inputLang.name=="Detect Language" ) 
+        
+        
+        if (this.state.inputLang.name=="Detect Language") 
         {
             options.body = encodedParams;
             
@@ -176,7 +201,6 @@ export default class App extends React.Component
             .then(response => response.data.detections[0][0])
             .then(response => this.detectLang(response))
             .catch(err => console.error(err));      
-            
         }
         else
         {
@@ -234,20 +258,27 @@ export default class App extends React.Component
     {
         const index = (lang.name == this.state.previousOutputLangs[0].name ? 1 : 0);
         
-        this.setState((state)=>({
-            outputLang:{language: lang.language,name: lang.name,flag: lang.flag},
-            
-            previousOutputLangs:[
-                {
-                    language: state.outputLang.language,
-                    name: state.outputLang.name,
-                    flag: state.outputLang.flag},
-                {
-                    language: state.previousOutputLangs[index].language,
-                    name: state.previousOutputLangs[index].name,
-                    flag: state.previousOutputLangs[index].flag
-                }],
-        }))   
+        const setLang = new Promise((resolve,reject)=>{
+            resolve(true);
+        }).then(()=>{
+            this.setState((state)=>({
+                outputLang:{language: lang.language,name: lang.name,flag: lang.flag},
+                
+                previousOutputLangs:[
+                    {
+                        language: state.outputLang.language,
+                        name: state.outputLang.name,
+                        flag: state.outputLang.flag},
+                    {
+                        language: state.previousOutputLangs[index].language,
+                        name: state.previousOutputLangs[index].name,
+                        flag: state.previousOutputLangs[index].flag
+                    }],
+            }))   
+        }).then(()=>{
+            this.translateText(this.state.value);
+        })
+        
     }
 
     SwitchLanguage(e)
@@ -255,6 +286,8 @@ export default class App extends React.Component
         this.setState((state)=>({
             inputLang:state.outputLang,
             outputLang:state.inputLang,
+            value:state.translated,
+            translated:state.value
         }))
 
 
@@ -283,6 +316,32 @@ export default class App extends React.Component
             this.setState({
                 detected:language[0]
             })            
+
+            const encodedParams = new URLSearchParams();
+            encodedParams.append("q", this.state.value);
+            encodedParams.append("target", this.state.outputLang.language);
+            encodedParams.append("source", language[0].language);
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'Accept-Encoding': 'application/gzip',
+                    'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com',
+                    'X-RapidAPI-Key': 'f2eb276479mshe2588f6254e9b51p1ef845jsn0e64a991a846'
+                },
+                body: encodedParams
+            };
+
+            fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', options)
+            .then(response => response.json())
+            .then(response=>response.data.translations[0].translatedText)
+            .then((response)=>{
+                this.setState({
+                    translated:HTMLdecode(response)
+                })
+            })
+            .catch(err => console.error(err));
         }
         else
         {
