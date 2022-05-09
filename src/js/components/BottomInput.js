@@ -13,9 +13,11 @@ export default class BottomInput extends React.Component
         return(
             <div className="translate-btn-section">
                 {
-                    detected==null ? 
+                    detected===null ? 
                     <div></div>:
-                    <p>Your Language is : <span>{detected.name}</span></p>
+                    (detected==undefined ?
+                        <p>We couldn't recognize this language</p> :
+                        <p>Your Language is : <span>{detected.name}</span></p>)
                 }
                 
                 <button onClick={()=>{translateText(value)}}>

@@ -126,7 +126,8 @@ export default class App extends React.Component
     setInputLang(lang)
     {
         this.setState({
-            inputLang:lang  
+            inputLang:lang,
+            detected:null
         })
     }
     setOutputLang(lang)
@@ -166,16 +167,16 @@ export default class App extends React.Component
         const encodedParams = new URLSearchParams();
         encodedParams.append("q", input);
 
-        if (this.state.inputLang.name=="Detect Language") 
+        if (this.state.inputLang.name=="Detect Language" ) 
         {
             options.body = encodedParams;
             
             fetch('https://google-translate1.p.rapidapi.com/language/translate/v2/detect', options)
             .then(response => response.json())
             .then(response => response.data.detections[0][0])
-            .then(response => {console.log(response);return response})
             .then(response => this.detectLang(response))
             .catch(err => console.error(err));      
+            
         }
         else
         {
@@ -281,15 +282,15 @@ export default class App extends React.Component
         if (language.length!=0) {
             this.setState({
                 detected:language[0]
-            })
+            })            
         }
         else
         {
-            
+            this.setState({
+                detected:undefined
+            })            
         }
         
-        
-        console.log(language);
     }
     
 }
