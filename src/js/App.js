@@ -283,6 +283,9 @@ export default class App extends React.Component
 
     SwitchLanguage(e)
     {
+        
+        if (this.state.inputLang.name=="Detect Language") return;
+
         this.setState((state)=>({
             inputLang:state.outputLang,
             outputLang:state.inputLang,
